@@ -1,6 +1,6 @@
-# ?? ??
+# 랜덤 포트 사용
 server:
-  port: 9001
+  port: 0
 
 # ??????? ???
 spring:
@@ -9,6 +9,8 @@ spring:
 
 # ??? ????? ??
 eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     register-with-eureka: true
     fetch-registry: true
