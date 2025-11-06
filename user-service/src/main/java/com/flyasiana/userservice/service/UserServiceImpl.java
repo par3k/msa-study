@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.core.env.Environment;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
     Environment env;
     UserRepository userRepository;
+    BCryptPasswordEncoder passwordEncoder;
 
     public UserServiceImpl(Environment env, UserRepository userRepository) {
         this.env = env;
@@ -34,5 +36,10 @@ public class UserServiceImpl implements UserService {
 
         UserDto returnUserDto = mapper.map(userEntity, UserDto.class);
         return returnUserDto;
+    }
+
+    @Override
+    public Iterable<UserEntity> getUserByAll() {
+        return userRepository.findAll();
     }
 }
