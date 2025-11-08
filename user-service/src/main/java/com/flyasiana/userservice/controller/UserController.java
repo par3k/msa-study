@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class UserController {
 
-    private Environment env;
-    private Greeting greeting;
-    private UserService userService;
+    private final Environment env;
+    private final Greeting greeting;
+    private final UserService userService;
 
     @Autowired
     public UserController(Environment env, Greeting greeting, UserService userService) {
