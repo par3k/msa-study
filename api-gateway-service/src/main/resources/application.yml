@@ -11,6 +11,10 @@ spring:
       server:
         webflux:
           routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/user-service/**
             - id: first-service
               uri: lb://MY-FIRST-SERVICE
               predicates:

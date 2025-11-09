@@ -5,5 +5,6 @@ import com.flyasiana.userservice.jpa.UserEntity;
 
 public interface UserService {
     UserDto createUser(UserDto userDto);
+    UserDto getUserById(String userId);
     public Iterable<UserEntity> getUserByAll();
 }

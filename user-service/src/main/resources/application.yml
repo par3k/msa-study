@@ -21,7 +21,7 @@ spring:
       name: user
       password: $2a$10$6DuHLAdvYnMUmxtQ9mnNk.gkIEzxrqoPcDSNtj3uxLDf1RDnKi/.W
 server:
-  port: 60000
+  port: 0
 
 eureka:
   instance:
