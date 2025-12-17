@@ -11,10 +11,31 @@ spring:
       server:
         webflux:
           routes:
+            - id: user-service-register
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/user-service/users
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - id: user-service-login
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/user-service/login
+                - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - id: user-service
               uri: lb://USER-SERVICE
               predicates:
                 - Path=/user-service/**
+                - Method=GET
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+                - AuthorizationHeaderFilter
             - id: catalog-service
               uri: lb://CATALOG-SERVICE
               predicates:
@@ -56,3 +77,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+token:
+  secret: my-very-long-secret-key-1234567890123456
