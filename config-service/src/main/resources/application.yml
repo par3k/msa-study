@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git: #default
+          uri: file://Users/alex/Downloads/workspace/inflearn/git-local-repo
+          default-label: master
