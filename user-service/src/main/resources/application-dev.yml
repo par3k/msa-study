@@ -1,9 +1,7 @@
 spring:
   application:
     name: user-service
-  profiles:
-    active: dev
-  #  config:
+#  config:
 #    import: "optional:configserver:http://localhost:8888"
   h2:
     console:
@@ -28,7 +26,7 @@ spring:
       password: $2a$10$6DuHLAdvYnMUmxtQ9mnNk.gkIEzxrqoPcDSNtj3uxLDf1RDnKi/.W
 
 server:
-  port: 0
+  port: 60000
 
 logging:
   level:
@@ -44,7 +42,7 @@ eureka:
       defaultZone: http://127.0.0.1:8761/eureka
 
 greeting:
-  message: Welcome to the Simple E-commerce. (spring boot)
+  message: Welcome to the Simple E-commerce. (dev profile)
 
 #token:
 #  secret: my-very-long-secret-key-1234567890123456
